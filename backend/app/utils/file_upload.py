@@ -4,7 +4,7 @@ import os
 from fastapi import UploadFile
 
 
-BASE_UPLOAD_DIR = "uploads/organizations"
+BASE_UPLOAD_DIR = "uploads/"
 
 
 def save_organization_file(
