@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 class OrganizationCreate(BaseModel):
     name: str = Field(..., min_length=2, max_length=100, description="The name of the organization")
     email: str = Field(..., min_length=5, max_length=150, description="The contact email address of the organization")
-    password: str = Field(..., min_length=6, max_length=100, description="The password for the organization account")
+    password: str = Field(..., min_length=1, max_length=100, description="The password for the organization account")
 
 class OrganizationResponse(BaseModel):
     id: int

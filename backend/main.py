@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
-from app.database.connection import engine, Base, test_db_connection
+from app.database.base import Base
+from app.database.connection import engine, test_db_connection
 from app.routes.org_routes import router as org_router
+from app.routes.file_routes import router as file_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -14,8 +16,9 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(org_router)
+app.include_router(file_router)
 
-@app.get("/server")
+@app.get("/")
 def server():
     return {
         "message": "Backend Running"
