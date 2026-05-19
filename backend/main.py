@@ -1,29 +1,22 @@
 from fastapi import FastAPI
+from contextlib import asynccontextmanager
 
-from app.database.connection import Base
-from app.database.connection import engine
-from app.database.connection import test_db_connection
+from app.database.connection import engine, Base, test_db_connection
+from app.routes.org_routes import router as org_router
 
-# from app.models.organization_model import Organization
-# from app.models.user_model import User
-
-app = FastAPI()
-
-
-@app.on_event("startup")
-def startup_event():
-
-    # Test database connection
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # 1. Create tables if they don't exist
+    Base.metadata.create_all(bind=engine)
+    # 2. Run the connection test
     test_db_connection()
+    yield
 
-    # Create tables
-    # Base.metadata.create_all(bind=engine)
+app = FastAPI(lifespan=lifespan)
+app.include_router(org_router)
 
-    # print("✅ Tables created successfully")
-
-
-@app.get("/")
-def home():
+@app.get("/server")
+def server():
     return {
         "message": "Backend Running"
     }
