@@ -1,0 +1,52 @@
+# =========================
+# FRONTEND
+# =========================
+
+frontend/node_modules
+frontend/.next
+frontend/dist
+frontend/build
+frontend/.env
+frontend/.env.local
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+
+# =========================
+# BACKEND
+# =========================
+
+backend/.venv
+backend/__pycache__
+backend/*.pyc
+backend/.env
+
+# Database
+backend/*.db
+
+# VS Code
+backend/.vscode
+
+
+# =========================
+# GLOBAL
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+
+# Environment files
+.env
+
+# Python
+*.py[cod]
+
+# Logs
+*.log
