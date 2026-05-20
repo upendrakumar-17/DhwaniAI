@@ -1,0 +1,101 @@
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #0d0d0d;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    z-index: 1001;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.sidebar-container.open {
+    transform: translateX(0);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    letter-spacing: -0.01em;
+}
+
+.sidebar-close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+}
+
+.sidebar-close-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--accent);
+}
+
+.sidebar-close-button:active {
+    transform: scale(0.92);
+}
+
+/* Sidebar Body */
+.sidebar-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-body > div {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.2s ease;
+}
+
+.sidebar-body > div:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--accent);
+    transform: translateX(3px);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #070707;
+}
+
+.sidebar-footer > div:first-child {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-footer > div:last-child {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+}

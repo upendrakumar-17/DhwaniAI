@@ -1,0 +1,99 @@
+.loading-screen-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #05070a; /* Sleek futuristic deep dark blue/black */
+    color: #ffffff;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.loading-wave-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.loading-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Static background path (shadow guide track) */
+.wave-path-bg {
+    fill: none;
+    stroke: rgba(0, 184, 174, 0.08); /* Transparent subtle accent track */
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Glowing overlay path which gets animated */
+.wave-path-glow {
+    fill: none;
+    stroke: url(#wave-gradient);
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0px 0px 8px rgba(0, 184, 174, 0.8));
+    
+    /* Segment size: 300px dash, 2000px gap */
+    stroke-dasharray: 1500 1500;
+    /* Move offset from 2300 (starting off-screen left) to 0 (all the way right) */
+    stroke-dashoffset: 3000;
+    animation: flow-pulse 1s infinite linear;
+}
+
+/* Loops the stroke offset infinitely */
+@keyframes flow-pulse {
+    0% {
+        stroke-dashoffset: 3000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Animated loader text */
+.loading-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.loading-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #00b8ae 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow-pulse-text 2s ease-in-out infinite;
+}
+
+.loading-subtitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* Heartbeat glowing breathing text */
+@keyframes glow-pulse-text {
+    0%, 100% {
+        opacity: 0.75;
+        filter: brightness(1) drop-shadow(0 0 0px rgba(0, 184, 174, 0));
+    }
+    50% {
+        opacity: 1;
+        filter: brightness(1.2) drop-shadow(0 0 6px rgba(0, 184, 174, 0.45));
+    }
+}
