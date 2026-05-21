@@ -8,6 +8,7 @@ from app.routes.org_routes import router as org_router
 from app.routes.file_routes import router as file_router
 from app.routes.vector_routes import router as vector_router
 from app.routes.chat_routes import router as chat_router
+from app.routes.user_routes import router as user_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -32,6 +33,7 @@ app.include_router(org_router)
 app.include_router(file_router)
 app.include_router(vector_router)
 app.include_router(chat_router)
+app.include_router(user_router)
 
 @app.get("/")
 def server():

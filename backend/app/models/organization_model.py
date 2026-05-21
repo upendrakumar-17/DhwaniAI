@@ -13,10 +13,15 @@ class Organization(Base):
     password = Column(String(255), nullable=False)
     is_active = Column(Boolean, default=True)
     files = relationship(
-    "OrganizationFile",
-    back_populates="organization",
-    cascade="all, delete-orphan"
-)
+        "OrganizationFile",
+        back_populates="organization",
+        cascade="all, delete-orphan"
+    )
+    users = relationship(
+        "User",
+        back_populates="organization",
+        cascade="all, delete-orphan"
+    )
     
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
